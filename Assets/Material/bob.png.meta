@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: 528c91e7542c2b6448c82425947d79f6
+timeCreated: 1428319187
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Player
+    21300002: Enamy_1
+    21300004: Sword
+    21300006: Enamy_2
+    21300008: Enamy_3
+    21300010: Enamy_4
+    21300012: Shield
+    21300014: Blocking shield
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Player
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 82
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Enamy_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 82
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Sword
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 83
+        width: 4
+        height: 12
+      alignment: 9
+      pivot: {x: .500396729, y: .16865094}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Enamy_2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 63
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Enamy_3
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 63
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Enamy_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 63
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shield
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 64
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Blocking shield
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 63
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
