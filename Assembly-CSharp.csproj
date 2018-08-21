@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{4A5DB464-0387-34DD-36FC-5C109897A294}</ProjectGuid>
+    <ProjectGuid>{29E1FEC6-0BB6-1717-41C4-394F700D0309}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -75,16 +75,16 @@
     <None Include="Assets\Grass.txt" />
     <None Include="Assets\Map.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/Мастерская/Unity/Unitty 5/2D - ChangeHand работает/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/Мастерская/Unity/Unitty 5/2D/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Мастерская/Unity/Unitty 5/2D - ChangeHand работает/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Мастерская/Unity/Unitty 5/2D/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Мастерская/Unity/Unitty 5/2D - ChangeHand работает/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Мастерская/Unity/Unitty 5/2D/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Мастерская/Unity/Unitty 5/2D - ChangeHand работает/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Мастерская/Unity/Unitty 5/2D/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>Q:/Program Files/Unity 2018.2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

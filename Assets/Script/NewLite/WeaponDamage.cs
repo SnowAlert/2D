@@ -8,8 +8,8 @@ public class WeaponDamage : NetworkBehaviour
     // Время пока оружие наносит урон при контакте
     public AnimationClip[] anim;
     //public int NumberAnim = 1;
-    [SyncVar]
-    public int BuferAnim = 3;
+    [SyncVar(hook = "SwordAnimation")]
+    public int BuferAnim = 0;
     [SyncVar]
     private float attackTimeConstant;
     [SyncVar]
@@ -47,8 +47,21 @@ public class WeaponDamage : NetworkBehaviour
         if (health != null)
         {
             health.TakeDamage(_damdge);
-            print(hit.name + " health: " + health.currentHealth);
+            //print(hit.name + " health: " + health.currentHealth);
         }
+    }
+
+
+
+
+
+
+
+    public void SwordAnimation(int NomberAnim)
+    {
+        print("SwordAnimation=" + NomberAnim + " Name " + this.name);
+        BuferAnim = NomberAnim;
+        print("SwordAnimationBuf=" + BuferAnim + " Name " + this.name);
     }
 
     void Start()
@@ -60,18 +73,19 @@ public class WeaponDamage : NetworkBehaviour
 
     void Update()
     {
-        //if (Input.GetKeyDown (KeyCode.Mouse0)) {
-        if (!player.GetComponent<NetworkIdentity>().isServer)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            print("Local");
-            CmdWeaponAnim();
+            if (!player.GetComponent<NetworkIdentity>().isServer)
+            {
+                print("Local");
+                CmdWeaponAnim();
+            }
+            else
+            {
+                print("!Local");
+                ClientWeaponAnim();
+            }
         }
-        else
-        {
-            print("!Local");
-            ClientWeaponAnim();
-        }
-        //}
         if (startTime == true)
         {
             attackTime -= Time.deltaTime;
@@ -86,34 +100,35 @@ public class WeaponDamage : NetworkBehaviour
     }
 
     [Command]
-    void CmdWeaponAnim()
+    public void CmdWeaponAnim()
     {
         ClientWeaponAnim();
     }
 
-    void ClientWeaponAnim()
+    public void ClientWeaponAnim()
     {
+        print("ClientWeaponAnim=" + BuferAnim+" Name "+this.name);
         if ((Input.GetButtonDown("Fire1")) && (attackTime >= attackTimeConstant))
         {
             if (BuferAnim == 1)
             {
-                print("BuferAnim=1 hit Right");
+                print("BuferAnim=1 hit Left");
                 GetComponent<Animation>().Play(anim[0].name);
             }
-            if (BuferAnim == 2)
+            else if (BuferAnim == 2)
             {
-                print("BuferAnim=2 hit Left");
+                print("BuferAnim=2 hit Right");
                 GetComponent<Animation>().Play(anim[1].name);
             }
             startTime = true;
             attackCompleted = false;
         }
-        if (BuferAnim == 3 && startTime == false)
+        else if (BuferAnim == 3 && startTime == false)
         {
             GetComponent<Animation>().Play(anim[2].name);
             print("BuferAnim=3 Walk");
         }
-        if (BuferAnim == 4 && startTime == false)
+        else if (BuferAnim == 4 && startTime == false)
         {
             GetComponent<Animation>().Play(anim[3].name);
             print("BuferAnim=4 Stand");

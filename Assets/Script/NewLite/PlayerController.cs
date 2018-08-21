@@ -14,6 +14,7 @@ public class PlayerController : NetworkBehaviour
 	private Transform Addition;
 	public GameObject Sword_;
 	public GameObject Sword;
+    public GameObject Sword2;
     //[SyncVar]
     //private byte ChangeTriger = 0;
     //[SyncVar]
@@ -27,7 +28,9 @@ public class PlayerController : NetworkBehaviour
     public Transform zRotate;	// объект для вращения по оси Z
 	void Start(){
         this.name = "Player" +Time.fixedTime;
-	}
+        // WeaponDamage waepons_animation = Sword.GetComponent<WeaponDamage>();
+        Sword = GameObject.Find("Sword(Clone)");
+    }
 	
 	void Update ()
 	{
@@ -41,29 +44,31 @@ public class PlayerController : NetworkBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             transform.position = transform.position = new Vector3(transform.position.x, transform.position.y + movementSpeed * Time.deltaTime);
-            Sword.GetComponent<WeaponDamage>().BuferAnim = 3;
+            SetWaeponAnimation(2);
         }
         if (Input.GetKey(KeyCode.S))
         {
             transform.position = transform.position = new Vector3(transform.position.x, transform.position.y - movementSpeed * Time.deltaTime);
-            Sword.GetComponent<WeaponDamage>().BuferAnim = 3;
+            SetWaeponAnimation(1);
         }
 		if (Input.GetKey (KeyCode.A)) {
 			transform.position = transform.position = new Vector3 (transform.position.x - movementSpeed * Time.deltaTime, transform.position.y);
-            Sword.GetComponent<WeaponDamage>().BuferAnim = 3;
+            SetWaeponAnimation(1);
+
             ChangeTriger1 = "Left";
         }
 		if (Input.GetKey (KeyCode.D)) {
 			transform.position = transform.position = new Vector3 (transform.position.x + movementSpeed * Time.deltaTime, transform.position.y);
-            Sword.GetComponent<WeaponDamage>().BuferAnim = 3;
+            SetWaeponAnimation(2);
             ChangeTriger1 = "Right";
         }
-        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.S))
-        {
-            print("DontMove");
-            //если мы стоим то и анимация оружия будет для стояния
-            Sword.GetComponent<WeaponDamage>().BuferAnim = 4;
-        }
+        //if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.S))
+        //{
+        //    print("DontMove");
+        //    //если мы стоим то и анимация оружия будет для стояния
+        //    WeaponDamage waepons_animation = Sword.GetComponent<WeaponDamage>();
+        //    waepons_animation.SwordAnimation(4);
+        //}
 
         if (Input.GetKeyDown (KeyCode.Mouse1)) 
 			CmdFire ();
@@ -96,6 +101,11 @@ public class PlayerController : NetworkBehaviour
 		Quaternion q = Quaternion.FromToRotation (Vector3.up, pos - transform.position);
 		zRotate.rotation = q;
 	}
+
+    public void SetWaeponAnimation(int NumberAnimation) {
+        WeaponDamage waepons_animation = Sword.GetComponent<WeaponDamage>();
+        waepons_animation.SwordAnimation(NumberAnimation);
+    }
 
     //из одной руки в другую меняет оружие и щит
     void ChangeHands(string loh)
@@ -151,8 +161,6 @@ public class PlayerController : NetworkBehaviour
 		RightHandt = transform.Find ("RightHandt");
 		LeftHandt = transform.Find ("LeftHandt");
 		Addition = transform.Find ("Addition");
-		//Sword = RightHandt.transform.Find ("Sword(Clone)").gameObject;
-		//Sword =RightHandt.gameObject;
 		CmdSword();
 	}
 }
