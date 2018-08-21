@@ -73,8 +73,7 @@ public class WeaponDamage : NetworkBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
+        //if (Input.GetKeyDown(KeyCode.Mouse0))        {
             if (!player.GetComponent<NetworkIdentity>().isServer)
             {
                 print("Local");
@@ -85,14 +84,13 @@ public class WeaponDamage : NetworkBehaviour
                 print("!Local");
                 ClientWeaponAnim();
             }
-        }
+       //}
         if (startTime == true)
         {
             attackTime -= Time.deltaTime;
         }
         if (attackTime <= 0)
         {
-
             startTime = false;
             attackTime = attackTimeConstant; //возвращаем переменной задержки её первоначальное значение из константы
             nowHit = false;
