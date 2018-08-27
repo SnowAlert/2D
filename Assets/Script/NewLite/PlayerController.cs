@@ -28,8 +28,8 @@ public class PlayerController : NetworkBehaviour
     public Transform zRotate;	// объект для вращения по оси Z
 	void Start(){
         this.name = "Player" +Time.fixedTime;
-
-        Sword = GameObject.Find("Sword(Clone)"); //Надо переделать!!!!!!!!!!!!!!!!!!!!
+        // WeaponDamage waepons_animation = Sword.GetComponent<WeaponDamage>();
+        Sword = GameObject.Find("Sword(Clone)");
     }
 	
 	void Update ()
@@ -62,12 +62,13 @@ public class PlayerController : NetworkBehaviour
             SetWaeponAnimation(2);
             ChangeTriger1 = "Right";
         }
-        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.S))
-        {
-            print("DontMove");
-            //если мы стоим то и анимация оружия будет для стояния
-            SetWaeponAnimation(4);
-        }
+        //if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.S))
+        //{
+        //    print("DontMove");
+        //    //если мы стоим то и анимация оружия будет для стояния
+        //    WeaponDamage waepons_animation = Sword.GetComponent<WeaponDamage>();
+        //    waepons_animation.SwordAnimation(4);
+        //}
 
         if (Input.GetKeyDown (KeyCode.Mouse1)) 
 			CmdFire ();
