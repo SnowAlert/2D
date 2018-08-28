@@ -11,6 +11,7 @@ public class Camera2D : MonoBehaviour
     public float z_up = -9.0f;
 
     private float m_OffsetZ;
+    private GameObject player;
     private Vector3 m_LastTargetPosition;
     private Vector3 m_CurrentVelocity;
     private Vector3 m_LookAheadPos;
@@ -18,7 +19,9 @@ public class Camera2D : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        m_LastTargetPosition = target.position;
+        player = GameObject.FindWithTag("Player");
+        target = player.transform;
+         m_LastTargetPosition = target.position;
         m_OffsetZ = (transform.position - target.position).z;
         transform.parent = null;
     }

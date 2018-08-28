@@ -13,6 +13,7 @@ public class GeneratorKarti : MonoBehaviour
 	public Transform pref5;
     public Transform in_group;
 
+    string local_Path;
     private string Line;
 	private byte counter = 0;
 	private int[,] Map = new int[64, 64];
@@ -36,9 +37,10 @@ public class GeneratorKarti : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		//Читаем файл и записываем ешл в массив
-		System.IO.StreamReader file =
-			new System.IO.StreamReader (@"D:\Мастерская\Unity\Unitty 5\2D\Assets\Map.txt");
+        local_Path = GetDataPath();
+        //Читаем файл и записываем ешл в массив
+        System.IO.StreamReader file =
+			new System.IO.StreamReader (local_Path+@"\Map.txt");
 
 		while ((Line = file.ReadLine ()) != null) 
 		{
@@ -151,4 +153,8 @@ public class GeneratorKarti : MonoBehaviour
             }
 		}
 	}
+    private static string GetDataPath()
+    {
+        return Application.dataPath;
+    }
 }
