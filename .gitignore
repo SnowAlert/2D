@@ -1,7 +1,10 @@
+
+Library/EditorInstance.json
 2D.sln
 Temp/*
 obj/*
 Library/*
+Library/
 Library/metadata/*
 Library/metadata/fe/fec197bad419341558f81f2ec8a05e18.info
 Library/metadata/f8/f8eca3a711f4842eba0c52ea9885ef7f
@@ -122,3 +125,4 @@ Library/CurrentLayout.dwlt
 Library/assetDatabase3
 Assembly-CSharp.csproj
 2D.sln
+*.log
