@@ -15,10 +15,18 @@ public class PlayerController : NetworkBehaviour
 	public GameObject Sword_;
 	public GameObject Sword;
     public GameObject Sword2;
-    //[SyncVar]
-    //private byte ChangeTriger = 0;
-    //[SyncVar]
-    //private byte ChangeTriger2 = 0;
+    private bool TimeAttak = false;
+
+
+    [SyncVar]
+    public bool startTime = false;
+    [SyncVar]
+    private bool nowHit = false;
+    [SyncVar]
+    private bool attackCompleted = true;
+    public float attackTime = 1.0f;    // Время пока оружие наносит урон при контакте
+    [SyncVar]
+    private float attackTimeConstant;
 
     [SyncVar]
     public string ChangeTriger1 = "1";
@@ -29,14 +37,18 @@ public class PlayerController : NetworkBehaviour
 	void Start(){
         this.name = "Player" +Time.fixedTime;
 
-        Sword = GameObject.Find("Sword(Clone)"); //Надо переделать!!!!!!!!!!!!!!!!!!!!
+        Sword = GameObject.Find("Sword(Clone)");    //Надо переделать!!!!!!!!!!!!!!!!!!!!
     }
 	
 	void Update ()
 	{
+
 		if (!isLocalPlayer)
 			return;
 
+        
+
+        //ChangeHands
         if (ChangeTriger1 != ChangeTriger2)
             ChangeHands("loh");
 
@@ -69,10 +81,45 @@ public class PlayerController : NetworkBehaviour
             SetWaeponAnimation(4);
         }
 
-        if (Input.GetKeyDown (KeyCode.Mouse1)) 
-			CmdFire ();
-		
-		if (zRotate)
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && (attackTime >= attackTimeConstant))
+        {
+            startTime = true;
+            attackCompleted = false;
+        }
+
+
+
+
+        if (startTime == true)
+        {
+            attackTime -= Time.deltaTime;
+        }
+        if (attackTime <= 0)
+        {
+            startTime = false;
+            attackTime = attackTimeConstant; //возвращаем переменной задержки её первоначальное значение из константы
+            nowHit = false;
+        }
+
+        //Берем состояние атаки из меча. Проверяем, что не бъем рукой и нажатие кнопки
+        WeaponDamage WeaDam = Sword.GetComponent<WeaponDamage>();
+        if (WeaDam != null)
+        {
+            TimeAttak = WeaDam.startTime;
+            print("TimeAttak "+TimeAttak);
+            print("startTime " + startTime);
+            print("attackCompleted " + attackCompleted);
+            print("nowHit " + nowHit);
+            if (startTime == false)
+                if (nowHit == false)
+                    if (attackCompleted == true)
+                        if  ((Input.GetKeyDown(KeyCode.Mouse1)) && (TimeAttak == false) )
+                    CmdFire();
+        }
+
+
+        if (zRotate)
 			SetRotation (); //поворачивает префаб с точкой спауна снарядов
 	}
 	//выстрел

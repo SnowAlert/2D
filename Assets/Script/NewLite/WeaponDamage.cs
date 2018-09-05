@@ -5,20 +5,23 @@ public class WeaponDamage : NetworkBehaviour
 {
     public int Damage = 1;
     public float attackTime = 1.0f;    // Время пока оружие наносит урон при контакте
+
+    [SyncVar]
+    private float attackTimeConstant;
+    [SyncVar]
+    public bool startTime = false;
+    [SyncVar]
+    private bool nowHit = false;
+    [SyncVar]
+    private bool attackCompleted = true;
+
+    public GameObject player;
+
     public AnimationClip[] anim;
     [SyncVar(hook = "SwordAnimation")]
     public int BuferAnim = 0;
     [SyncVar(hook = "SwordAnimation")]
     public int Anim = 1;
-    [SyncVar]
-    private float attackTimeConstant;
-    [SyncVar]
-    private bool startTime = false;
-    [SyncVar]
-    private bool nowHit = false;
-    [SyncVar]
-    private bool attackCompleted = true;
-    public GameObject player;
 
     void OnTriggerStay2D(Collider2D coll)
     {
